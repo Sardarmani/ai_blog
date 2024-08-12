@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Article</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            
+        }
+        h2 {
+            text-align: center;
+            color: #0056b3;
+        }
+        .article-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+        .article-container p {
+            margin: 0 0 10px;
+        }
+        .article-container h3 {
+            color: #0056b3;
+            margin-top: 20px;
+        }
+        .article-container ul {
+            padding-left: 20px;
+            list-style-type: disc;
+        }
+    </style>
+
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+<style>
+    .gradient-custom {
+/* fallback for old browsers */
+background: #6a11cb;
+
+/* Chrome 10-25, Safari 5.1-6 */
+background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+
+/* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+}
+</style>
+
+</head>
+<body class="bg-gray-100 gradient-custom">
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-white text-lg font-bold">
+                <a href="index.html" class="text-white no-underline hover:text-gray-300">Blog Generator</a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button class="text-white md:hidden flex items-center" id="menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+
+            <!-- Nav links -->
+            <div class="hidden md:flex space-x-6">
+
+                <a href="{% url 'logout' %}" class="text-white font-semibold hover:bg-red-600 px-4 py-2 rounded-lg transition duration-300 ease-in-out">Logout</a>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <a href="{% url 'logout' %}" class="text-white font-semibold hover:bg-red-600 px-4 py-2 rounded-lg transition duration-300 ease-in-out">Logout</a>
+        </div>
+    </nav>
+ 
+    <div class="article-container">
+        <h2>Generated Article</h2>
+        <p>{{ article|linebreaks }}</p>
+    </div>
+</body>
+</html>

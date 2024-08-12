@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto Blog Generator</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+        <style>
+            .gradient-custom {
+    /* fallback for old browsers */
+    background: #6a11cb;
+    
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: -webkit-linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1));
+    
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))
+    }
+        </style>
+</head>
+<body class="bg-gray-100 gradient-custom">
+
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo -->
+            <div class="text-white text-lg font-bold">
+                <a href="{% url 'index' %}" class="text-white no-underline hover:text-gray-300 hover:bg-red-600 px-4 py-2 rounded-lg transition duration-300 ease-in-out">Blog Generator</a>
+            </div>
+    
+            <!-- Welcome Message -->
+            {% if user.is_authenticated %}
+            <div class="text-white">
+                Welcome, {{ user.username }}!
+            </div>
+            {% endif %}
+    
+            <!-- Mobile menu button -->
+            <button class="text-white md:hidden flex items-center" id="menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                </svg>
+            </button>
+    
+            <!-- Nav links -->
+            <div class="hidden md:flex space-x-6">
+                <a href="{% url 'logout' %}" class="text-white font-semibold hover:bg-red-600 px-4 py-2 rounded-lg transition duration-300 ease-in-out">Logout</a>
+            </div>
+        </div>
+    
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="md:hidden hidden">
+            <a href="{% url 'logout' %}" class="text-white font-semibold hover:bg-red-600 px-4 py-2 rounded-lg transition duration-300 ease-in-out">Logout</a>
+        </div>
+    </nav>
+    
+    <div class="container mx-auto mt-8 px-4">
+        <div class="bg-white p-8 rounded-lg shadow-md border-2 border-gray-200 hover:border-blue-500 hover:shadow-lg transition duration-300 max-w-full sm:max-w-lg lg:max-w-xl mx-auto">
+            <h1 class="text-3xl md:text-4xl font-bold mb-6 text-center text-gray-900">Auto Blog Generator</h1>
+            <p class="text-base md:text-lg text-center text-gray-700 mb-6">Welcome to the Auto Blog Generator, your go-to tool for effortlessly creating engaging blog posts. Whether you're a seasoned blogger or just starting out, this tool simplifies the process by generating insightful content based on your provided links. Simply paste a link, and let the magic unfold as it transforms information into compelling articles. Start generating content that captivates and informs your audience today!</p>
+            <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-4">
+                
+                <form method="post" action="{% url 'generate_blog' %}">
+                        
+                <input id="youtubeLink" name="youtube_link" type="url" class="w-full md:w-2/3 lg:w-1/2 p-3 border rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Paste a Link">
+                <button id="generateBlogButton" class="bg-blue-500 hover:bg-blue-700 text-white px-4 py-3 rounded-md transition duration-300">Generate</button>
+            </form>
+            </div>
+        </div>
+    </div>
+
+    
+<script>
+    const menuButton = document.getElementById('menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    menuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+</script>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
